@@ -266,20 +266,14 @@ const animationTimeline = () => {
     )
     .to(".nine", 0.5, {
       opacity: 0,
-    }, "+=5")
+    }, "+=3")
     .to(".ten", 0.5, {
       visibility: "visible",
       opacity: 1,
       onComplete: () => {
-        const video = document.getElementById("finalVideo");
-        video.muted = true;
-        video.currentTime = 0;
-        video.play().then(() => {
-          video.muted = false;
-        }).catch((e) => {
-          console.log("Autoplay failed, click to play");
-          video.controls = true;
-        });
+        const iframe = document.getElementById("finalVideo");
+        // Set src to trigger autoplay when iframe appears - muted=false for sound
+        iframe.src = "https://player.cloudinary.com/embed/?public_id=0214_ssu8wp&cloud_name=dcn5ytjmm&autoplay=true&muted=false&controls=true";
       }
     });
 
